@@ -155,11 +155,12 @@ public class RadarChartView extends LBaseView implements View.OnClickListener {
 
                 float point_x = (float) (j * mMaxRadius * getCos(i * 360 / PolygonNumber) / ClassNumber);
                 float point_y = (float) (j * mMaxRadius * getSin(i * 360 / PolygonNumber) / ClassNumber);
-
                 path.lineTo(point_x, point_y);
 
-                canvas.drawLine(point_x, point_y, -point_x, -point_y, mBorderPaint);
-
+                if (PolygonNumber % 2 != 0)
+                    canvas.drawLine(point_x, point_y, 0, 0, mBorderPaint);
+                else
+                    canvas.drawLine(point_x, point_y, -point_x, -point_y, mBorderPaint);
             }
 
             path.close();
